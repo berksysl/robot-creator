@@ -1,6 +1,7 @@
-#Robot Creator Project
+<h1>Robot Creator Project</h1>
 
-#Wireframes
+<h2>Wireframes</h2>
+
 ![image](https://user-images.githubusercontent.com/54808716/204096852-e82a8d5f-1688-48cc-bffa-41cdaf5a3ea9.png)
 ![image](https://user-images.githubusercontent.com/54808716/204096871-3cca9330-833d-4959-9016-b233f73c2cc9.png)
 ![image](https://user-images.githubusercontent.com/54808716/204097052-8ba1b6c1-db14-4a56-9939-2a582c79d3cc.png)
