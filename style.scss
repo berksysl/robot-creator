@@ -1,0 +1,26 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom,#54BED6 0%, #000 100%);
+    font-family: 'Righteous', cursive;
+    font-size: 18px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 10%;
+}
+
+.carousel-item {
+    padding: 80px;
+    height: 400px;
+    
+    img {
+        height: 100% !important;
+    }
+}
