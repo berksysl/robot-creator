@@ -1,5 +1,8 @@
 <h1>Robot Creator Project</h1>
 
+<h2>Live Preview</h2>
+<a href="https://berksysl.github.io/robot-creator/">Live Preview</a>
+
 <h2>Wireframes</h2>
 
 ![image](https://user-images.githubusercontent.com/54808716/204096852-e82a8d5f-1688-48cc-bffa-41cdaf5a3ea9.png)
