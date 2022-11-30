@@ -3,6 +3,10 @@ const slider = document.querySelector('.slider-container');
 //Converts slide node to array and assign it to slides variable
 const slides = Array.from(document.querySelectorAll('.slide'));
 
+const inputName = document.querySelector('#inputName');
+
+const inputBoxes = Array.from(document.querySelectorAll('.inputBox'));
+
 let isDragging = false,
     startPos = 0,
     currentTranslate = 0,
@@ -35,7 +39,6 @@ function touchStart(index) {
         isDragging = true;
         animationID = requestAnimationFrame(animation);
         slider.classList.add("grabbing");
-        console.log("start");
     }
 }
 
@@ -51,14 +54,12 @@ function touchEnd() {
         currentIndex -= 1;
     }
     setPositionByIndex();
-    console.log("end");
 }
 
 function touchMove(event) {
     if(isDragging){
         const currentPosition = getPositionX(event);
         currentTranslate = prevTranslate + currentPosition - startPos;
-        console.log("move");
     }
 }
 
@@ -87,4 +88,40 @@ function setPositionByIndex(){
     currentTranslate = currentIndex * -window.innerWidth;
     prevTranslate = currentTranslate;
     setSliderPosition()
+}
+
+/*Robot Creation*/
+class Robot {
+    constructor(name) {
+        this.name = name;
+        this.color = undefined;
+        this.height = undefined;
+    }
+    
+    setColor(color) {
+        this.color = color;
+    }
+
+    setHeight(height) {
+        this.height = height;
+    }
+}
+
+function selectRobot() {
+    let r1 = new Robot(inputName.value);
+    //changing second inputBoxes's text content
+    inputBoxes[1].children[0].innerHTML += r1.name;
+    
+}
+
+function setColor() {
+
+}
+
+function setHeight() {
+
+}
+
+function drawRobot() {
+
 }

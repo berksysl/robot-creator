@@ -26,14 +26,28 @@
     </div>
     
       <!--Inputs-->
-      <div class="inputBox">
-        <h2>Name your robot</h2>
-        <div class="content">
-          <input type="text">
-          <button type="submit" onclick="selectRobot()">NEXT</button>
+      <div class="inputs">
+        <div class="inputBox">
+          <h2>Name your robot</h2>
+          <div class="content">
+            <input id="inputName" type="text" required>
+            <button id="#create-btn" type="submit" onclick="selectRobot()">NEXT</button>
+          </div>
         </div>
-      </div>
 
+        <div class="inputBox">
+          <h2>Paint the </h2>
+          <div class="colors">
+            <form action="">
+              <input type="radio" name="color" id="yellowColor" value="#DFEB56">
+              <input type="radio" name="color" id="redColor" value="#DB4444">
+              <input type="radio" name="color" id="greenColor" value="#56C05A">
+              <input type="radio" name="color" id="blueColor" value="#3C5D9C">
+              <input type="radio" name="color" id="purpleColor" value="#D74FC1">
+          </form>  
+          </div>
+        </div>
+    </div>
     <script src="./app.js"></script>
 </body>
 </html>
