@@ -14,36 +14,71 @@ let isDragging = false,
     currentTranslate = 0,
     prevTranslate = 0,
     animationID = 0,
-    currentIndex = 0;
+    currentIndex = 0,
+    curTranslate = 0;
+    currentPos = 0;
 
-slides.forEach((slide, index) => {
-    //Gets images in slides
-    const slideImage = slide.querySelector('img');
-    //when dragstart event handled prevent the default act
-    slide.addEventListener('dragstart', (e) => e.preventDefault())
+AddEventListeners();
 
-    //Touch events
-    slide.addEventListener('touchstart', touchStart(index));
-    slide.addEventListener('touchend', touchEnd)
-    slide.addEventListener('touchmove', touchMove)
+nextBtn.forEach((btn) => btn.addEventListener("click", function(){
+    removeEventListeners();
+    currentPos += 1;
+    curTranslate -= window.innerWidth;
+    inputContainer.style.transform = `translate(${curTranslate}px)`;
+}));
 
-    //Mouse events
-    slide.addEventListener('mousedown', touchStart(index));
-    slide.addEventListener('mouseup', touchEnd);
-    slide.addEventListener('mouseleave', touchEnd);
-    slide.addEventListener('mousemove', touchMove)
-})
+previousBtn.forEach((btn) => btn.addEventListener("click", function(){
+    currentPos -= 1;
+    if(currentPos == 0){
+        AddEventListeners();
+    }
+        curTranslate += window.innerWidth;
+        inputContainer.style.transform = `translate(${curTranslate}px)`;
+}))
+     
+function AddEventListeners(){
+    slides.forEach((slide, index) => {
+        //Gets images in slides
+        const slideImage = slide.querySelector('img');
+        //when dragstart event handled prevent the default act
+        slide.addEventListener('dragstart', (e) => e.preventDefault())
 
-controllers[0].addEventListener("click", nextSlide)
-controllers[1].addEventListener("click", prevSlide)
+        //Touch events
+        let x = slide.addEventListener('touchstart', touchStart(index));
+        slide.addEventListener('touchend', touchEnd)
+        slide.addEventListener('touchmove', touchMove)
+
+        //Mouse events
+        slide.addEventListener('mousedown', touchStart(index));
+        slide.addEventListener('mouseup', touchEnd);
+        slide.addEventListener('mouseleave', touchEnd);
+        slide.addEventListener('mousemove', touchMove);
+    })
+
+    controllers[0].addEventListener("click", prevSlide);
+    if(currentIndex!=0){
+        controllers[0].style.display = "flex";
+    }
+    else{
+        controllers[0].style.display = "none";
+    }
+    controllers[1].addEventListener("click", nextSlide);
+    if(currentIndex == 3)
+    {
+        controllers[1].style.display = "none";
+    }
+    else {
+        controllers[1].style.display = "flex";
+    }
+}
 
 function nextSlide() {
-    currentIndex -= 1;
+    currentIndex += 1;
     setPositionByIndex();
 }
 
 function prevSlide() {
-    currentIndex += 1;
+    currentIndex -= 1;
     setPositionByIndex();
 }
 
@@ -100,7 +135,7 @@ function setSliderPosition() {
     if(currentIndex == 0){
         controllers[0].style.display = "none";
     }
-    else{
+    else {
         controllers[0].style.display = "flex";
     }
     if(currentIndex == 3) {
@@ -143,22 +178,10 @@ function selectRobot() {
 }
 
 function removeEventListeners() {
-    slides.forEach((slide, index) => {
-    //Touch events
-    slide.removeEventListener('touchstart', touchStart(index),true);
-    slide.removeEventListener('touchend', touchEnd)
-    slide.removeEventListener('touchmove', touchMove)
-
-    //Mouse events
-    slide.removeEventListener('mousedown', touchStart(index),true);
-    slide.removeEventListener('mouseup', touchEnd);
-    slide.removeEventListener('mouseleave', touchEnd);
-    slide.removeEventListener('mousemove', touchMove);
+    slides.forEach((slide) => {
+    slide.replaceWith(slide.cloneNode(true));
     });
-    controllers[0].removeEventListener("click", nextSlide);
     controllers[0].style.display = "none";
-
-    controllers[1].removeEventListener("click", prevSlide);
     controllers[1].style.display = "none";
 }
 
@@ -173,17 +196,3 @@ function setHeight() {
 function drawRobot() {
 
 }
-
-let curTranslate = 0;
-nextBtn.forEach((btn) => {
-    btn.addEventListener("click", function(){
-        curTranslate -= window.innerWidth;
-        inputContainer.style.transform = `translate(${curTranslate}px)`;
-    })
-})
-previousBtn.forEach((btn) => {
-    btn.addEventListener("click", function(){
-        curTranslate += window.innerWidth;
-        inputContainer.style.transform = `translate(${curTranslate}px)`;
-    })
-})
