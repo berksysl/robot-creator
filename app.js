@@ -2,9 +2,8 @@
 const slider = document.querySelector('.slider-container');
 //Converts slide node to array and assign it to slides variable
 const slides = Array.from(document.querySelectorAll('.slide'));
-
+const inputContainer = document.querySelector('.inputs');
 const inputName = document.querySelector('#inputName');
-
 const inputBoxes = Array.from(document.querySelectorAll('.inputBox'));
 
 let isDragging = false,
@@ -112,6 +111,7 @@ function selectRobot() {
     //changing second inputBoxes's text content
     inputBoxes[1].children[0].innerHTML += r1.name;
     inputBoxes[2].children[0].innerHTML += r1.name;
+    inputContainer.style.transform
 }
 
 function setColor() {

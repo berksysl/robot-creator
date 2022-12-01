@@ -12,6 +12,7 @@ html {
 
 body {
   height: 100vh;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   background-image: linear-gradient(to bottom, #54BED6 0%, #000 100%);
@@ -68,15 +69,18 @@ h1 {
 }
 
 .inputs {
-  display: flex;
+  display: inline-flex;
   height: 40vh;
-  flex-wrap: nowrap;
+  overflow: hidden;
+  transform: translateX(0px);
+  transition: transform 0.3s ease-out;
 }
 
 .inputBox {
   width: 100vw;
   height: 100%;
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -117,4 +121,61 @@ h1 {
   margin: 20px 10px;
   font-family: "Righteous", cursive;
   text-align: center;
+}
+
+#startBtn {
+  width: 70%;
+  padding: 20px;
+}
+
+form input {
+  width: 50px;
+  height: 50px;
+  margin: 0 4px;
+  position: relative;
+}
+
+form input::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#yellowColor::before {
+  background-color: #DFEB56;
+}
+
+#redColor::before {
+  background-color: #DB4444;
+}
+
+#greenColor::before {
+  background-color: #56C05A;
+}
+
+#blueColor::before {
+  background-color: #3C5D9C;
+}
+
+#purpleColor::before {
+  background-color: #D74FC1;
+}
+
+form input:checked::before {
+  transform: scale(1.2);
+  transition: transform 0.1s ease-out;
+}
+
+.height-options button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-family: inherit;
+  background-color: black;
+  position: relative;
 }/*# sourceMappingURL=style.css.map */
