@@ -31,6 +31,26 @@ h1 {
     margin-top: 4%;
   }
 }
+span {
+  position: fixed;
+  font-size: 2rem;
+  height: 400px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+span.left-controller {
+  display: none;
+  left: 2%;
+  top: 10%;
+}
+span.right-controller {
+  right: 2%;
+  top: 10%;
+}
+
 .slider-container {
   height: 40vh;
   display: inline-flex;

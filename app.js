@@ -7,6 +7,7 @@ const inputName = document.querySelector('#inputName');
 const nextBtn = Array.from(document.querySelectorAll('.nextbtn'));
 const previousBtn = Array.from(document.querySelectorAll('.previousbtn'));
 const inputBoxes = Array.from(document.querySelectorAll('.inputBox'));
+const controllers = Array.from(document.querySelectorAll('span'));
 
 let isDragging = false,
     startPos = 0,
@@ -32,6 +33,19 @@ slides.forEach((slide, index) => {
     slide.addEventListener('mouseleave', touchEnd);
     slide.addEventListener('mousemove', touchMove)
 })
+
+controllers[0].addEventListener("click", nextSlide)
+controllers[1].addEventListener("click", prevSlide)
+
+function nextSlide() {
+    currentIndex -= 1;
+    setPositionByIndex();
+}
+
+function prevSlide() {
+    currentIndex += 1;
+    setPositionByIndex();
+}
 
 function touchStart(index) {
     return function(event) {
@@ -83,6 +97,18 @@ function animation() {
 
 function setSliderPosition() {
     slider.style.transform = `translateX(${currentTranslate}px)`;
+    if(currentIndex == 0){
+        controllers[0].style.display = "none";
+    }
+    else{
+        controllers[0].style.display = "flex";
+    }
+    if(currentIndex == 3) {
+        controllers[1].style.display = "none";
+    }
+    else{
+        controllers[1].style.display = "flex";
+    }
 }
 
 function setPositionByIndex(){
@@ -110,10 +136,30 @@ class Robot {
 
 function selectRobot() {
     let r1 = new Robot(inputName.value);
+    removeEventListeners();
     //changing second inputBoxes's text content
-    inputBoxes[1].children[0].innerHTML += r1.name;
-    inputBoxes[2].children[0].innerHTML += r1.name;
-    inputContainer.style.transform
+    inputBoxes[1].children[0].innerHTML = `Paint the ${r1.name}`;
+    inputBoxes[2].children[0].innerHTML = `Set height for ${r1.name}`;
+}
+
+function removeEventListeners() {
+    slides.forEach((slide, index) => {
+    //Touch events
+    slide.removeEventListener('touchstart', touchStart(index),true);
+    slide.removeEventListener('touchend', touchEnd)
+    slide.removeEventListener('touchmove', touchMove)
+
+    //Mouse events
+    slide.removeEventListener('mousedown', touchStart(index),true);
+    slide.removeEventListener('mouseup', touchEnd);
+    slide.removeEventListener('mouseleave', touchEnd);
+    slide.removeEventListener('mousemove', touchMove);
+    });
+    controllers[0].removeEventListener("click", nextSlide);
+    controllers[0].style.display = "none";
+
+    controllers[1].removeEventListener("click", prevSlide);
+    controllers[1].style.display = "none";
 }
 
 function setColor() {
