@@ -111,7 +111,7 @@ function selectRobot() {
     let r1 = new Robot(inputName.value);
     //changing second inputBoxes's text content
     inputBoxes[1].children[0].innerHTML += r1.name;
-    
+    inputBoxes[2].children[0].innerHTML += r1.name;
 }
 
 function setColor() {
