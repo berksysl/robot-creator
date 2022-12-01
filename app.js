@@ -4,6 +4,8 @@ const slider = document.querySelector('.slider-container');
 const slides = Array.from(document.querySelectorAll('.slide'));
 const inputContainer = document.querySelector('.inputs');
 const inputName = document.querySelector('#inputName');
+const nextBtn = Array.from(document.querySelectorAll('.nextbtn'));
+const previousBtn = Array.from(document.querySelectorAll('.previousbtn'));
 const inputBoxes = Array.from(document.querySelectorAll('.inputBox'));
 
 let isDragging = false,
@@ -125,3 +127,17 @@ function setHeight() {
 function drawRobot() {
 
 }
+
+let curTranslate = 0;
+nextBtn.forEach((btn) => {
+    btn.addEventListener("click", function(){
+        curTranslate -= window.innerWidth;
+        inputContainer.style.transform = `translate(${curTranslate}px)`;
+    })
+})
+previousBtn.forEach((btn) => {
+    btn.addEventListener("click", function(){
+        curTranslate += window.innerWidth;
+        inputContainer.style.transform = `translate(${curTranslate}px)`;
+    })
+})
