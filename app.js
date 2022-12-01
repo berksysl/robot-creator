@@ -8,6 +8,7 @@ const nextBtn = Array.from(document.querySelectorAll('.nextbtn'));
 const previousBtn = Array.from(document.querySelectorAll('.previousbtn'));
 const inputBoxes = Array.from(document.querySelectorAll('.inputBox'));
 const controllers = Array.from(document.querySelectorAll('span'));
+const colors = Array.from(document.querySelectorAll('input[type=radio]'));
 
 let isDragging = false,
     startPos = 0,
@@ -168,9 +169,9 @@ class Robot {
         this.height = height;
     }
 }
-
+let r1;
 function selectRobot() {
-    let r1 = new Robot(inputName.value);
+    r1 = new Robot(inputName.value);
     removeEventListeners();
     //changing second inputBoxes's text content
     inputBoxes[1].children[0].innerHTML = `Paint the ${r1.name}`;
@@ -196,3 +197,4 @@ function setHeight() {
 function drawRobot() {
 
 }
+
