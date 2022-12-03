@@ -180,8 +180,8 @@ form input::before {
   left: 0;
 }
 
-#yellowColor::before {
-  background-color: #DFEB56;
+#blackColor::before {
+  background-color: #000;
 }
 
 #redColor::before {
@@ -198,6 +198,11 @@ form input::before {
 
 #purpleColor::before {
   background-color: #D74FC1;
+}
+
+form input:checked::before {
+  transform: scale(1.2);
+  transition: transform 0.1s ease-out;
 }
 
 form input:checked::before {

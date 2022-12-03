@@ -189,7 +189,25 @@ let r1;
 function selectRobot() {
     r1 = new Robot(inputName.value);
     removeEventListeners();
-    //changing second inputBoxes's text content
+    //changing second and third inputBoxes's text content
     inputBoxes[1].children[0].innerHTML = `Paint the ${r1.name}`;
     inputBoxes[2].children[0].innerHTML = `Set height for ${r1.name}`;
+}
+
+function changeRobotColor(colorCode) {
+    let robotOne = document.getElementById("robot-1");
+    let robotTwo = document.getElementById("robot-2");
+    let robotThree = document.getElementById("robot-3");
+    let robotFour = document.getElementById("robot-4");
+    const robotsSvg = [robotOne, robotTwo, robotThree, robotFour];
+    let i = 0;
+    while(i < 4){
+        robotsSvg[i].childNodes.forEach((x)=>{
+            if(x.id != undefined){
+                x.style.fill = colorCode;
+            }
+        })
+        i++;
+    }
+    
 }

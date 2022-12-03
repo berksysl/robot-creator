@@ -1,7 +1,7 @@
 /* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-$yellowColor: #DFEB56;
+$blackColor: #000;
 $redColor: #DB4444;
 $greenColor: #56C05A;
 $blueColor: #3C5D9C;
@@ -194,8 +194,8 @@ form input::before {
     left:0;
 }
 
-#yellowColor::before {
-    background-color: $yellowColor;
+#blackColor::before {
+    background-color: $blackColor;
 }
 #redColor::before {
     background-color: $redColor;
@@ -215,6 +215,10 @@ form input:checked::before {
     transition: transform 0.1s ease-out;
 }
 
+form input:checked::before {
+    transform: scale(1.2);
+    transition: transform 0.1s ease-out;
+}
 /*********************************************
 *************** THIRD INPUT ******************
 **********************************************/
