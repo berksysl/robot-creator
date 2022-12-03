@@ -1,13 +1,13 @@
-//Gets slider container and puts into slider variable
+//Slide
 const slider = document.querySelector('.slider-container');
-//Converts slide node to array and assign it to slides variable
-const slides = Array.from(document.querySelectorAll('.slide'));
+let slides = Array.from(document.querySelectorAll('.slide'));
+const controllers = Array.from(document.querySelectorAll('span'));
+//Inputs
 const inputContainer = document.querySelector('.inputs');
 const inputName = document.querySelector('#inputName');
 const nextBtn = Array.from(document.querySelectorAll('.nextbtn'));
 const previousBtn = Array.from(document.querySelectorAll('.previousbtn'));
 const inputBoxes = Array.from(document.querySelectorAll('.inputBox'));
-const controllers = Array.from(document.querySelectorAll('span'));
 const colors = Array.from(document.querySelectorAll('input[type=radio]'));
 
 let isDragging = false,
@@ -21,6 +21,7 @@ let isDragging = false,
 
 AddEventListeners();
 
+// Slider Controllers
 nextBtn.forEach((btn) => btn.addEventListener("click", function(){
     removeEventListeners();
     currentPos += 1;
@@ -36,8 +37,10 @@ previousBtn.forEach((btn) => btn.addEventListener("click", function(){
         curTranslate += window.innerWidth;
         inputContainer.style.transform = `translate(${curTranslate}px)`;
 }))
-     
+
+// Adding event listeners for slides and controllers
 function AddEventListeners(){
+    slides = Array.from(document.querySelectorAll('.slide'));
     slides.forEach((slide, index) => {
         //Gets images in slides
         const slideImage = slide.querySelector('img');
@@ -45,7 +48,7 @@ function AddEventListeners(){
         slide.addEventListener('dragstart', (e) => e.preventDefault())
 
         //Touch events
-        let x = slide.addEventListener('touchstart', touchStart(index));
+        slide.addEventListener('touchstart', touchStart(index));
         slide.addEventListener('touchend', touchEnd)
         slide.addEventListener('touchmove', touchMove)
 
@@ -63,6 +66,7 @@ function AddEventListeners(){
     else{
         controllers[0].style.display = "none";
     }
+
     controllers[1].addEventListener("click", nextSlide);
     if(currentIndex == 3)
     {
@@ -73,16 +77,16 @@ function AddEventListeners(){
     }
 }
 
-function nextSlide() {
-    currentIndex += 1;
-    setPositionByIndex();
+// Removing event listeners for slides and controllers
+function removeEventListeners() {
+    slides.forEach((slide) => {
+    slide.replaceWith(slide.cloneNode(true));
+    });
+    controllers[0].style.display = "none";
+    controllers[1].style.display = "none";
 }
 
-function prevSlide() {
-    currentIndex -= 1;
-    setPositionByIndex();
-}
-
+// Event functions
 function touchStart(index) {
     return function(event) {
         currentIndex = index;
@@ -153,6 +157,16 @@ function setPositionByIndex(){
     setSliderPosition()
 }
 
+function nextSlide() {
+    currentIndex += 1;
+    setPositionByIndex();
+}
+
+function prevSlide() {
+    currentIndex -= 1;
+    setPositionByIndex();
+}
+
 /*Robot Creation*/
 class Robot {
     constructor(name) {
@@ -169,7 +183,9 @@ class Robot {
         this.height = height;
     }
 }
+
 let r1;
+
 function selectRobot() {
     r1 = new Robot(inputName.value);
     removeEventListeners();
@@ -177,24 +193,3 @@ function selectRobot() {
     inputBoxes[1].children[0].innerHTML = `Paint the ${r1.name}`;
     inputBoxes[2].children[0].innerHTML = `Set height for ${r1.name}`;
 }
-
-function removeEventListeners() {
-    slides.forEach((slide) => {
-    slide.replaceWith(slide.cloneNode(true));
-    });
-    controllers[0].style.display = "none";
-    controllers[1].style.display = "none";
-}
-
-function setColor() {
-
-}
-
-function setHeight() {
-
-}
-
-function drawRobot() {
-
-}
-
