@@ -191,7 +191,6 @@ function selectRobot() {
     removeEventListeners();
     //changing second and third inputBoxes's text content
     inputBoxes[1].children[0].innerHTML = `Paint the ${r1.name}`;
-    inputBoxes[2].children[0].innerHTML = `Set height for ${r1.name}`;
 }
 
 function changeRobotColor(colorCode) {
@@ -203,11 +202,36 @@ function changeRobotColor(colorCode) {
     let i = 0;
     while(i < 4){
         robotsSvg[i].childNodes.forEach((x)=>{
-            if(x.id != undefined){
+            if(x.id != undefined && x.id != "no-change"){
                 x.style.fill = colorCode;
             }
         })
         i++;
     }
-    
+}
+
+
+
+function startRobotAnimation() {
+    let svgone = document.getElementById("robotone");
+    let svgtwo = document.getElementById("robottwo");
+    let svgthree = document.getElementById("robotthree");
+    let svgfour = document.getElementById("robotfour");
+
+    inputContainer.style.display = "none";
+    slider.style.height = "100vh";
+    switch(currentIndex){
+        case 0:
+            svgone.classList.add("horizontalAnimation");
+            break;
+        case 1:
+            svgtwo.classList.add("horizontalAnimation");
+            break;
+        case 2:
+            svgthree.classList.add("horizontalAnimation");
+            break;
+        case 3:
+            svgfour.classList.add("horizontalAnimation");
+            break;
+    }
 }

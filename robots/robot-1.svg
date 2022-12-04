@@ -7,6 +7,8 @@
 <rect id="head" x="26.8633" y="27.3855" width="84.7929" height="43.36" rx="2" fill="black"/>
 <path id="left-ear" d="M22.0455 61.11V36.5393C14.3371 36.5393 5.66506 38.9482 3.25617 42.3206C1.81083 44.3441 -0.116273 46.6566 1.81084 52.438C3.73795 58.2193 14.8189 61.11 22.0455 61.11Z" fill="black" stroke="black"/>
 <path id="right-ear" d="M116.627 61.11V36.5393C124.335 36.5393 133.007 38.9482 135.416 42.3206C136.861 44.3441 138.789 46.6566 136.861 52.438C134.934 58.2193 123.853 61.11 116.627 61.11Z" fill="black" stroke="black"/>
+<g id="on-body">
+<g id="no-change">
 <g id="face">
 <rect id="left-eyebrow" x="42.2802" y="34.1304" width="8.672" height="2.89067" rx="1.44533" fill="#D9D9D9"/>
 <rect id="right-eyebrow" x="89.4944" y="34.1304" width="8.672" height="2.89067" rx="1.44533" fill="#D9D9D9"/>
@@ -24,7 +26,6 @@
 <path id="Vector 5" d="M65.8873 62.0735V65.9277" stroke="black"/>
 </g>
 </g>
-<g id="on-body">
 <path id="Vector 11" d="M38.426 127.595C47.5797 132.253 72.1504 138.773 97.2029 127.595C88.0491 134.661 63.4784 144.554 38.426 127.595Z" fill="white"/>
 <g id="Rectangle 13">
 <mask id="path-22-inside-1_25_33" fill="white">
@@ -33,6 +34,7 @@
 <rect x="55.77" y="100.616" width="26.016" height="26.9796" rx="6" stroke="white" stroke-width="14" mask="url(#path-22-inside-1_25_33)"/>
 </g>
 <circle id="Ellipse 7" cx="50.9522" cy="100.616" r="1.92711" fill="white"/>
+</g>
 </g>
 </g>
 </svg>
